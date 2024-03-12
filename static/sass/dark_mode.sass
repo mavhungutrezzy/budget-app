@@ -1,0 +1,45 @@
+@import 'colors'
+
+$dark-mode-light-background: lighten($black, 15) !important
+$dark-mode-light-text-color: white !important
+$dark-mode-button-background-color: $black !important
+$dark-mode-button-text-color: white !important
+
+%dark-mode-button
+  background-color: $dark-mode-button-background-color
+  color: $dark-mode-button-text-color
+
+%dark-mode-text
+  background-color: $dark-mode-light-background
+  color: $dark-mode-light-text-color
+
+body.dark-mode
+  background: $black
+  color: white
+
+  .transaction
+    &.muted
+      @extend %dark-mode-text
+
+  .striped
+    @extend %dark-mode-text
+
+  .years-to-project-control
+    @extend %dark-mode-button
+
+  .edit-form,
+  .add-group-form-wrapper,
+  button
+    @extend %dark-mode-button
+
+  button
+    &:hover
+      background-color: $accent-color !important
+      color: white !important
+
+  .edit-form input,
+  .edit-form select
+    @extend %dark-mode-text
+
+  .with-raise-marker
+    color: white

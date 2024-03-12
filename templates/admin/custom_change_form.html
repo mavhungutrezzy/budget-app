@@ -1,0 +1,22 @@
+{% extends 'admin/change_form.html' %}
+
+{% block title %}{{ request.user.name }} - Profile{% endblock %}
+{% block content_title %}{% endblock %}
+{% block content_subtitle %}{% endblock %}
+
+{% block object-tools %}
+    {{ block.super }}
+
+    {% if request.session.new_user %}
+    <div class="welcome-blurb">
+        <p class="welcome-title">Welcome to this little finance app!</p>
+        <p>To get started, fill in the form below with some quick information.</p>
+        <p>
+            You can add more Transactions and Transaction Groups using the icons within the inline forms,
+            or use the navigation menu on the left.
+        </p>
+        <p>When you've got a good start, click "View Site" or the "Finance by Month" text in the top left.</p>
+        <p><a href="/">View Site</a></p>
+    </div>
+    {% endif %}
+{% endblock %}

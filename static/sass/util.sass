@@ -1,0 +1,174 @@
+@import 'colors'
+
+/* Utility stuff ******************************************************************************************************/
+.hidden
+  display: none !important
+
+%text-shadow
+  text-shadow: rgba(0, 0, 0, 0.1) 0 0.5px 0.5px
+
+%box-shadow
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1)
+
+%no-padding-margin
+  padding: 0
+  margin: 0
+
+%component-margins
+  margin: .5em auto
+
+%generic-card-styling
+  padding: .25em .5em
+  background-color: white
+  border-radius: .25em
+  border: 1px solid $grey
+
+.flex-horizontal
+  align-self: flex-start
+
+// Value with label
+.value-with-label
+  display: flex
+  flex-direction: column
+  padding: 0.25em 0.5em
+  margin: .25em
+  text-align: center
+
+  p
+    @extend %no-padding-margin
+    margin: 0 0.25em
+
+    &:first-child
+      font-size: 1.75em
+      @extend %text-shadow
+
+.section-content
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+
+.component
+  @extend %component-margins
+
+  .component-title
+    @extend %no-padding-margin
+    @extend %text-shadow
+    @extend %box-shadow
+    margin: 0 auto
+    padding: .2em 0
+    text-align: center
+    font-size: 1.25em
+    color: white !important
+    background: $accent-color
+    @media (min-width: $small-breakpoint)
+      max-width: 30em
+      border-radius: .75em
+
+// Edit Transaction Form
+.edit-form
+  padding: 0.5em
+  @extend %generic-card-styling
+  @extend %box-shadow
+
+  .edit-form-upper
+    display: flex
+    justify-content: space-between
+    flex-direction: row-reverse
+    font-size: .6em
+
+    .edit-form-controls
+      display: flex
+      justify-content: center
+      div
+        margin: .25em .1em
+        @extend button
+
+        &:last-of-type
+          margin-right: 0
+
+    .form-close
+      align-self: flex-end
+      @extend button
+      margin-bottom: .5em
+      padding: 0.5em 0.75em
+
+  p
+    display: flex
+    flex-direction: column
+    margin: 0.5em 0
+
+    label
+      margin-bottom: .35em
+      font-size: 0.8em
+      color: darken($grey, 15)
+
+    select,
+    input
+      padding: 0.5em 0.25em
+      @extend %generic-card-styling
+
+      &.readonly
+        pointer-events: none
+        color: $grey
+
+  .add-group-btn
+    margin-bottom: .5em
+    padding: 0.5em 0.75em
+
+  .form-group
+    @extend %generic-card-styling
+    margin: .5em auto
+
+    .form-title
+      text-align: right
+      font-size: 0.8em
+
+  .edit-form-submit
+    width: 100%
+
+.with-raise-header
+  display: block
+  font-size: 0.8em
+  font-weight: normal
+
+.with-raise-marker
+  padding: .25em
+  padding-left: 0
+  font-size: 1.5em
+  line-height: 0
+  vertical-align: middle
+  font-weight: bold
+
+.tooltip
+  cursor: help
+  position: relative
+
+  &:hover:before,
+  &:hover:after
+    display: block
+
+  &:before
+    content: attr(data-tooltip)
+    position: absolute
+    width: max-content
+    top: -18px
+    right: 0
+    margin-left: 15px
+    padding: 10px
+    border-radius: 0.75em
+    background: #000
+    color: #fff
+    text-align: center
+    display: none
+    font-size: .5em
+    font-weight: normal
+
+  &:after
+    content: ""
+    position: absolute
+    right: 2px
+    top: -1px
+    transform: rotate(270deg)
+    border: 10px solid
+    border-color: transparent #000 transparent transparent
+    display: none

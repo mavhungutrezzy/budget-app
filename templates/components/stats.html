@@ -1,0 +1,27 @@
+{% load app_extras %}
+
+<div class="component">
+    <div class="stats-section">
+        <div class="section-content">
+            <div class="value-with-label">
+                <p>{{ income_calculations.total_monthly_income|money_format }}</p>
+                <p>Total Monthly Income</p>
+            </div>
+
+            <div class="value-with-label">
+                <p>{{ income_calculations.total_monthly_expenses|money_format }}</p>
+                <p>Total Monthly Expenses</p>
+            </div>
+
+            <div class="value-with-label">
+                <p>{{ income_calculations.net_monthly_income|money_format }}</p>
+                <p>Net Monthly Income
+                    {% if user.toggle_raise %}
+                        <span class="with-raise-marker tooltip" data-tooltip="{{ income_calculations.net_monthly_income_with_raise|money_format }} with {{ user.raise_pct }}% raise">*
+                        </span>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

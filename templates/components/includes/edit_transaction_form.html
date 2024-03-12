@@ -1,0 +1,34 @@
+{% load app_extras %}
+
+{% if object %}
+<form class="edit-form" method="post" action="{% url 'edit-form' object_id=object.id object_type=object|class_name_display %}" data-id="{{ object.id }}">
+{% else %}
+<form class="edit-form" method="post" action="{% url 'edit-form' %}">
+{% endif %}
+    {% csrf_token %}
+
+    <div class="edit-form-upper">
+        <div data-action="close" class="edit-form-action form-close">X</div>
+        <div class="edit-form-controls">
+            {% if object %}
+            <div class="edit-form-action" data-action="delete" data-id="{{ object.id }}" data-type="{{ object|class_name_display }}">Delete</div>
+            {% endif %}
+
+            {% if add_group_form %}
+            <div class="edit-form-action" data-action="add-group">Add Group</div>
+            {% endif %}
+         </div>
+    </div>
+
+    <div class="add-group-form-wrapper form-group hidden">
+        <div class="form-title">Add New Transaction Group</div>
+        {{ add_group_form.as_p }}
+    </div>
+
+    <div class="add-group-form-wrapper form-group">
+        <div class="form-title">{% if object %}Edit{% else %}Add{% endif %} {% if object %}{{ object|class_name_display }}{% else %}Monthly Transaction{% endif %}</div>
+    {{ edit_form.as_p }}
+    </div>
+
+    <button class="edit-form-submit" type="submit">Submit</button>
+</form>

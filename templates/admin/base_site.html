@@ -1,0 +1,23 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/extra_admin.css' %}">
+{% endblock %}
+
+{% block extrastyle %}
+    {% if not request.user.dark_mode %}
+    <link rel="stylesheet" type="text/css" href="{% static 'django_light/django_light.css' %}" />
+    {% endif %}
+{% endblock extrastyle %}
+
+{% block userlinks %}
+    {% if site_url %}
+        <a href="{{ site_url }}">{% translate 'View site' %}</a>
+    {% endif %}
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'home' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}

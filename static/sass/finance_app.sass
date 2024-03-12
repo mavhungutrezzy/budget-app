@@ -1,0 +1,150 @@
+@import 'colors'
+@import 'util'
+
+/* Upper Section ******************************************************************************************************/
+.upper-section
+  .admin-edit-link
+    font-size: 0.6em
+
+/* Middle Section *****************************************************************************************************/
+%muted
+  color: $grey
+
+.middle-section
+  .transactions-body
+    display: flex
+    margin: 0 auto
+    flex-wrap: wrap
+    max-width: 40em
+
+    .transactions-list
+      padding: 0 1em
+      width: 18em
+      flex: 1
+
+      .transaction-list-title
+        margin: 0.5em 0
+        padding: 0.2em 1em
+        border-radius: .75em
+        background-color: $accent-color
+        color: white
+        @extend %text-shadow
+        @extend %box-shadow
+
+      .transaction-group
+        margin: 0
+        &.muted
+          @extend %muted
+
+        .transaction-group-title
+          font-weight: bold
+          text-align: left
+          display: flex
+          justify-content: space-between
+          cursor: pointer
+
+        .transaction
+          display: flex
+          justify-content: space-between
+          border-bottom: 1px dotted
+          &:not(.group-total)
+            cursor: pointer
+
+          &.muted
+            @extend %muted
+
+          &:hover:not(:last-child):not(.muted)
+            background: $accent-color
+            color: white
+
+          &:last-child
+            border-bottom: none
+
+            p:last-of-type
+              border-top: 2px solid $dark-grey
+              margin-top: -1px
+              padding: .25em 0
+
+          p
+            @extend %no-padding-margin
+
+          .transaction-amount
+            display: flex
+
+            .multiplier-symbol
+              margin: 0 .25em
+
+  .transaction-controls
+    display: flex
+    align-items: center
+    flex-direction: row-reverse
+    width: 100%
+    margin: 0.5em 0
+
+    div
+      @extend button
+      font-size: 0.7em
+      margin-right: 0.75em
+
+  .stats-section
+    @extend %component-margins
+
+/* Lower Section ******************************************************************************************************/
+.lower-section
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+  .predictions-table
+    width: 100%
+    align-self: center
+
+    .years-to-project-form
+      display: flex
+      justify-content: center
+      align-items: baseline
+
+      a
+        text-decoration: none
+        color: $black
+
+      .years-to-project-control
+        font-size: 1em
+        padding: 0.2rem 0.75rem
+        cursor: pointer
+        border: 1px solid $grey
+        border-radius: 0.375rem
+
+        &:hover
+          background-color: $accent-color !important
+          color: white !important
+
+      .years-to-project-value
+        margin: 0 .5em
+        font-size: 1.5em
+        line-height: 1.5em
+
+    table
+      @extend %component-margins
+      border-spacing: 0
+      width: 100%
+
+      @media(min-width: $small-breakpoint)
+        width: 70%
+
+      th, td
+        padding: .5em
+
+      .predictions-headers
+        th
+          font-weight: bold
+          text-align: left
+          border-bottom: 3px solid $grey
+
+      .prediction-row
+        &:hover
+          background-color: $accent-color !important
+          color: white !important
+
+        &.striped
+          background-color: lighten($grey, 15%)

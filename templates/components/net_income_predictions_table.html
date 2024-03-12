@@ -1,0 +1,53 @@
+{% load app_extras %}
+
+<a id="predictions-table"></a>
+<div class="component">
+    <div class="component-title">
+        Fuzzy Net Income Calculations
+    </div>
+
+    <!-- Years to Project Form -->
+    <div class="years-to-project-form">
+        <a href="/?years={{ years_to_project|add:-1 }}#predictions-table" class="years-to-project-control"><</a>
+        <div class="years-to-project-value">
+            {{ years_to_project }} year{% if years_to_project != 1 %}s{% endif %}
+        </div>
+        <a href="/?years={{ years_to_project|add:1 }}#predictions-table" class="years-to-project-control">></a>
+    </div>
+
+    <!-- Net income predictions table -->
+    <table>
+        <tr class="predictions-headers">
+            <th>Time From Now</th>
+            <th>Date</th>
+            <th>{{ user.name }}'s Age</th>
+            <th>New Total</th>
+            <th>Investment</th>
+            <th>Net Income</th>
+        </tr>
+
+        {% for row in net_income_calculations %}
+        <tr class="prediction-row {% if forloop.counter|divisibleby:2 %}striped{% endif %}">
+            <td>{{ row.time_from_now }}</td>
+            <td>{{ row.date_string }}</td>
+            <td>{{ row.new_age }}</td>
+
+            <td>
+                {{ row.new_total|money_format }}
+                {% if user.toggle_raise and row.raise_applies_to_date %}
+                    <span class="with-raise-marker tooltip" data-tooltip="Calculated with a {{ user.raise_pct }}% raise">*</span>
+                {% endif %}
+            </td>
+
+            <td>{{ row.investment|money_format }}</td>
+
+            <td>
+                {{ row.net_income|money_format }}
+                {% if user.toggle_raise and row.raise_applies_to_date %}
+                    <span class="with-raise-marker tooltip" data-tooltip="Calculated with a {{ user.raise_pct }}% raise">*</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>

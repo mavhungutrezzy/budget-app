@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Net Income Calculator</title>
+
+    <style>
+        :root {
+          --accent-color: {{ request.user.accent_color }}
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+
+<body class="{% if request.user.dark_mode %}dark-mode{% endif %}">
+    {% block content %}
+        {% include 'upper_section.html' %}
+        {% include 'middle_section.html' %}
+        {% include 'lower_section.html' %}
+    {% endblock %}
+
+    <script type="text/javascript" src="{% static 'js/util.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript">
+        jsConfig.editFormUrl = '{% url 'edit-form' %}';
+        jsConfig.editFormActionUrl = '{% url 'edit-form-action' %}';
+        jsConfig.init();
+    </script>
+</body>
+</html>

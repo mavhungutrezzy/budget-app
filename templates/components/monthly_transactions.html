@@ -1,0 +1,11 @@
+<div class="transactions-body">
+    <!-- Income -->
+    {% include 'components/includes/transactions_table.html' with transaction_groups=user.get_income_by_group transaction_type="in" %}
+
+    <!-- Expenses -->
+    {% include 'components/includes/transactions_table.html' with transaction_groups=user.get_expenses_by_group transaction_type="ex" %}
+
+    <div class="transaction-controls">
+        <button class="add-transaction-btn editable" data-id="add">+ Add Transaction</button>
+    </div>
+</div>

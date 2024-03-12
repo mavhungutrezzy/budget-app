@@ -1,0 +1,28 @@
+{% load app_extras %}
+
+<div class="component">
+    <div class="profile-section">
+
+        <div class="component-title">
+            <span>{{ user.name }}</span>
+            <a class="admin-edit-link" href="{% url 'admin:app_customuser_change' user.id %}">Edit</a>
+        </div>
+
+        <div class="section-content">
+            <div class="value-with-label">
+                <p>{% now "M d, Y" %}</p>
+                <p>Today</p>
+            </div>
+
+            <div class="value-with-label">
+                <p>{{ user.get_current_age }}</p>
+                <p>Age</p>
+            </div>
+
+            <div class="value-with-label">
+                <p data-current-value="{{ user.starting_value }}">{{ user.starting_value|money_format }}</p>
+                <p>Starting Value</p>
+            </div>
+        </div>
+    </div>
+</div>

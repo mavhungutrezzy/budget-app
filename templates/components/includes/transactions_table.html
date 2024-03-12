@@ -1,0 +1,47 @@
+{% load app_extras %}
+
+<div class="transactions-list">
+    <div class="transaction-list-title">
+        {% if transaction_type == 'in' %}
+            Monthly Income
+        {% else %}
+            Monthly Expenses
+        {% endif %}
+    </div>
+    {% for group, data in transaction_groups.items %}
+    <div class="transaction-group {% if group.muted %}muted{% endif %}">
+        <div class="transaction-group-title editable" data-id="{{ group.id }}" data-type="TransactionGroup">
+            {{ group.group_name }} {% if group.muted %}(muted){% endif %}
+        </div>
+
+        {% for transaction in data.transactions %}
+        <div class="transaction editable {% if transaction.muted %}muted tooltip{% endif %}"
+             {% if transaction.muted %}data-tooltip="Transaction muted"{% endif %}
+             data-id="{{ transaction.id }}"
+             data-type="MonthlyTransaction">
+
+            <div class="transaction-name">
+                <p>{{ transaction }}</p>
+            </div>
+
+            <div class="transaction-amount">
+                <p>{{ transaction.amount|money_format }}</p>
+
+                <p class="edit-field {% if transaction.multiplier == 1 %} hidden{% endif %}">
+                    <span class="multiplier-symbol">x</span>
+                    {{ transaction.multiplier }}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Group Total -->
+        <div class="transaction group-total">
+            <div class="transaction-name"></div>
+            <div class="transaction-amount">
+                <p>{{ data.group_total|money_format }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
