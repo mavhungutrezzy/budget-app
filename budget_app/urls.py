@@ -17,6 +17,7 @@ from django.views.static import serve
 from django.urls import path, re_path
 from django.conf import settings
 from django.contrib import admin
+from django.conf.urls.static import static
 
 from app.views import HomeView, EditFormView, EditFormActionView
 
@@ -27,7 +28,6 @@ urlpatterns = [
     path('edit-form', EditFormView.as_view(), name='edit-form'),
     path('edit-form/<object_id>/<object_type>', EditFormView.as_view(), name='edit-form'),
     path('edit-form-action', EditFormActionView.as_view(), name='edit-form-action'),
-
-    # Continue serving static files even with debug = False
-    re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

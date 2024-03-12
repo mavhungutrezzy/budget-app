@@ -1,1 +1,22 @@
-.breadcrumbs,.object-tools,.app-auth{display:none}.readonly{pointer-events:none;color:gray}.welcome-blurb{margin:1em auto;padding:.25em 1em;border:1px solid;border-radius:.3em;max-width:30em}.welcome-blurb .welcome-title{font-size:1.2em;font-weight:bold}/*# sourceMappingURL=extra_admin.css.map */
+.breadcrumbs,
+.object-tools,
+.app-auth {
+  display: none;
+}
+
+.readonly {
+  pointer-events: none;
+  color: grey;
+}
+
+.welcome-blurb {
+  margin: 1em auto;
+  padding: 0.25em 1em;
+  border: 1px solid;
+  border-radius: 0.3em;
+  max-width: 30em;
+}
+.welcome-blurb .welcome-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}/*# sourceMappingURL=extra_admin.css.map */

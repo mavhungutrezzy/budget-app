@@ -1,1 +1,24 @@
-body.dark-mode{background:#525252;color:#fff}/*# sourceMappingURL=dark_mode.css.map */
+body.dark-mode .edit-form,
+body.dark-mode .add-group-form-wrapper,
+body.dark-mode button, body.dark-mode .years-to-project-control {
+  background-color: rgb(82, 82, 82) !important;
+  color: white !important;
+}
+
+body.dark-mode .edit-form input,
+body.dark-mode .edit-form select, body.dark-mode .striped, body.dark-mode .transaction.muted {
+  background-color: #787878 !important;
+  color: white !important;
+}
+
+body.dark-mode {
+  background: rgb(82, 82, 82);
+  color: white;
+}
+body.dark-mode button:hover {
+  background-color: var(--accent-color) !important;
+  color: white !important;
+}
+body.dark-mode .with-raise-marker {
+  color: white;
+}/*# sourceMappingURL=dark_mode.css.map */
